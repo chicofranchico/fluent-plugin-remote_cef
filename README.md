@@ -1,11 +1,11 @@
-# fluent-plugin-remote_cef_output
+# fluent-plugin-remote_cef
+
+[Fluentd](http://fluentd.org) plugin for outputing CEF (Common Event Format) towards a remote ArcSight appliance
 
 This code is based off of reproio's implementation of remote_syslog_output:
 https://github.com/reproio/fluent-plugin-remote_syslog/
 
 [![Build Status](https://travis-ci.org/chicofranchico/fluent-plugin-remote_cef.svg?branch=master)](https://travis-ci.org/chicofranchico/fluent-plugin-remote_cef)
-
-[Fluentd](http://fluentd.org) plugin for outputing CEF (Common Event Format) towards an ArcSight appliance
 
 ## Requirements
 
