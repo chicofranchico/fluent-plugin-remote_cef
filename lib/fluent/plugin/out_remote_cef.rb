@@ -66,6 +66,10 @@ module Fluent
             # instantiate a CEF event
             event = CEF::Event.new(event_time: time.to_int, name: name)
 
+            # if record has host key defined, it will be set bellow
+            # otherwise, always take property as override (nil won't set anything)
+            event_host = @hostname
+
             # for every field, set the corresponding mapped CEF value
             record.each do |k, v|
               event.send(Kernel.format('%s=', k), v)
@@ -73,7 +77,7 @@ module Fluent
 
             # set event defaults after (to enforce them)
             @sender.eventDefaults = {
-              host: @hostname,
+              host: event_host,
               cef_version: @cef_version,
               deviceVendor: @device_vendor,
               deviceProduct: @device_product,
