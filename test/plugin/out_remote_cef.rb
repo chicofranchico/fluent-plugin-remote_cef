@@ -13,8 +13,8 @@ class RemoteCefOutputTest < Test::Unit::TestCase
   def test_configure
     d = create_driver %(
       @type remote_cef
-      host 127.0.0.1
-      port 1234
+      host arcsight.example.com
+      port 5566
       hostname fluentd.example.com
       cef_version "CEF:0"
       device_vendor Ubuntu
@@ -26,16 +26,16 @@ class RemoteCefOutputTest < Test::Unit::TestCase
     loggers = d.instance.instance_variable_get(:@senders)
     assert_equal loggers, []
 
-    assert_equal 'example.com', d.instance.instance_variable_get(:@host)
+    assert_equal 'arcsight.example.com', d.instance.instance_variable_get(:@host)
     assert_equal 5566, d.instance.instance_variable_get(:@port)
-    assert_equal 'debug', d.instance.instance_variable_get(:@severity)
+    assert_equal 'fluentd.example.com', d.instance.instance_variable_get(:@hostname)
   end
 
   def test_write
     d = create_driver %(
       @type remote_syslog
-      hostname foo.com
-      host example.com
+      hostname fluentd.example.com
+      host arcsight.example.com
       port 5566
       severity debug
       program minitest

@@ -73,6 +73,7 @@ module Fluent
 
             # set event defaults after (to enforce them)
             @sender.eventDefaults = {
+              host: @hostname,
               cef_version: @cef_version,
               deviceVendor: @device_vendor,
               deviceProduct: @device_product,
